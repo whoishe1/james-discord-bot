@@ -32,7 +32,7 @@ async def hello(ctx):
 
 @help.command()
 async def clear(ctx):
-    embed = discord.Embed(title = "Clear", description = "Deletes 'x' amount of lines, will delete up to 5 lines at once, defaults 1 line by default if nothing is specified", colour = ctx.author.color)
+    embed = discord.Embed(title = "Clear", description = "Deletes 'x' amount of lines, will delete up to 5 lines at once, defaults 1 line by default if nothing is specified (Includes current ", colour = ctx.author.color)
 
     embed.add_field(name = "Syntax", value = "!clear (integer), for example !clear 3 or !clear")
 
