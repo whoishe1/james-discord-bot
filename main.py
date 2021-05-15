@@ -85,15 +85,12 @@ async def clear(ctx, amount=1):
 
 @client.command()
 async def dominion(ctx):
-    jordan = ctx.guild.get_member(249819836668968962)
-    james = ctx.guild.get_member(190327326372790272)
-    nick = ctx.guild.get_member(328824897914667009)
-    tony = ctx.guild.get_member(520466645655748608)
+    dominion = ctx.guild.get_role(843055201204174879)
 
     embed = discord.Embed(colour = discord.Colour.dark_teal())
     embed.set_image(url = "https://cdn.discordapp.com/attachments/842841855686737980/843011390054072320/a0urCDS.png")
 
-    embed.add_field(name = ":wave:", value = f"{jordan.mention} {james.mention} {nick.mention} {tony.mention} lets play dominion! https://dominion.games/ :rice: :rice: :rice:")
+    embed.add_field(name = ":wave:", value = f"{dominion.mention} lets play dominion! https://dominion.games/ :rice: :rice: :rice:")
 
     await ctx.send(embed = embed)
 
