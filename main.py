@@ -1,66 +1,54 @@
-from functools import total_ordering
 from keys.keys import DISCORD_TOKEN
 import discord
 from discord.ext import commands
+import os
 
-#Todo: move help commands to a Cog
-
+#settings
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix="!", intents=intents)
 client.remove_command("help")
 
+#find and load cogs
+for filename in os.listdir("./cogs"):
+    try:
+        if filename.endswith(".py"):
+            client.load_extension(f"cogs.{filename[:-3]}")
+    except Exception as e:
+        print(f"Could not load cog {filename}: {str(e)}")
+
+#Load Cog
+@client.command()
+async def load(ctx, cog = None):
+    try:
+        client.load_extension(cog)
+    except Exception as e:
+        print(f"Could not load cog {cog} due to: {str(e)}")
+    else:
+        print(f"{cog} loaded succesfully!")
+        name = cog.split(".")[1]
+        await ctx.send(f"{name} has been loaded")
+
+#Unload Cog
+@client.command()
+async def unload(ctx, cog = None):
+    try:
+        client.unload_extension(cog)
+    except Exception as e:
+        print(f"Could not unload cog {cog} due to: {str(e)}")
+    else:
+        print(f"{cog} unloaded succesfully!")
+        name = cog.split(".")[1]
+        await ctx.send(f"{name} has been unloaded")
+
+#Catch errors
+@client.event
+async def on_command_error(ctx, error):
+    if isinstance(error, discord.ext.commands.errors.CommandNotFound):
+        await ctx.send("Command wasn't found! Sorry :cry:")
+
 @client.event
 async def on_ready():
     print("JamLam bot is ready!")
-
-#Help
-@client.group(invoke_without_command = True)
-async def help(ctx):
-    embed = discord.Embed(title = "Help", description = "Use !help <command> for more information", colour = discord.Colour.dark_orange())
-
-    embed.add_field(name = "Commands", value = "hello, clear, dominion, gartic, apex")
-
-    await ctx.send(embed = embed)
- 
-@help.command()
-async def hello(ctx):
-    embed = discord.Embed(title = "Hello", description = "JamLam likey :smile:", colour = ctx.author.color)
-
-    embed.add_field(name = "Syntax", value = "!hello")
-
-    await ctx.send(embed = embed)
-
-@help.command()
-async def clear(ctx):
-    embed = discord.Embed(title = "Clear", description = "Deletes 'x' amount of lines, will delete up to 5 lines at once, defaults 1 line by default if nothing is specified (Includes current ", colour = ctx.author.color)
-
-    embed.add_field(name = "Syntax", value = "!clear (integer), for example !clear 3 or !clear")
-
-    await ctx.send(embed = embed)
-
-@help.command()
-async def dominion(ctx):
-    embed = discord.Embed(title = "Dominion", description = "Asks Jordan, James, Nick, and Tony spefically to play dominion :sweat_smile:", colour = ctx.author.color)
-
-    embed.add_field(name = "Syntax", value = "!dominion")
-
-    await ctx.send(embed = embed)
-
-@help.command()
-async def gartic(ctx):
-    embed = discord.Embed(title = "Clear", description = "Asks people who have the role 'board games' to play gartic", colour = ctx.author.color)
-
-    embed.add_field(name = "Syntax", value = "!gartic")
-
-    await ctx.send(embed = embed)
-
-@help.command()
-async def apex(ctx):
-    embed = discord.Embed(title = "Apex", description = "Asks people who have the role 'apex' to play Apex", colour = ctx.author.color)
-
-    embed.add_field(name = "Syntax", value = "!apex")
-
-    await ctx.send(embed = embed)
 
 #Commands
 @client.command
