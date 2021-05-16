@@ -1,11 +1,11 @@
-from keys.keys import DISCORD_TOKEN
+from keys.keys import token
 import discord
 from discord.ext import commands
 import os
 
 #Settings
 intents = discord.Intents.all()
-client = commands.Bot(command_prefix="!", owner_id = 249819836668968962, intents=intents)
+client = commands.Bot(command_prefix="!", intents=intents)
 client.remove_command("help")
 
 #Find and load cogs
@@ -18,7 +18,7 @@ for filename in os.listdir("./cogs"):
 
 #Load Cog
 @client.command()
-@client.is_owner()
+@commands.has_role(304851155144540172)
 async def load(ctx, cog = None):
     try:
         client.load_extension(cog)
@@ -31,7 +31,7 @@ async def load(ctx, cog = None):
 
 #Unload Cog
 @client.command()
-@client.is_owner()
+@commands.has_role(304851155144540172)
 async def unload(ctx, cog = None):
     try:
         client.unload_extension(cog)
