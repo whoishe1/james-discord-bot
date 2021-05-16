@@ -18,6 +18,7 @@ for filename in os.listdir("./cogs"):
 
 #Load Cog
 @client.command()
+@client.is_owner()
 async def load(ctx, cog = None):
     try:
         client.load_extension(cog)
@@ -30,6 +31,7 @@ async def load(ctx, cog = None):
 
 #Unload Cog
 @client.command()
+@client.is_owner()
 async def unload(ctx, cog = None):
     try:
         client.unload_extension(cog)
@@ -44,7 +46,7 @@ async def unload(ctx, cog = None):
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, discord.ext.commands.errors.CommandNotFound):
-        await ctx.send("Command wasn't found! Sorry :cry:")
+        await ctx.send("Command wasn't found!:cry: Please use !help for the list of commands")
 
 @client.event
 async def on_ready():
