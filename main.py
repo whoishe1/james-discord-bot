@@ -108,4 +108,4 @@ async def apex(ctx):
 
     await ctx.send(embed = embed)
 
-client.run(DISCORD_TOKEN)
+client.run(os.environ['DISCORD_TOKEN'])
