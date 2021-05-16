@@ -5,7 +5,7 @@ import os
 
 #Settings
 intents = discord.Intents.all()
-client = commands.Bot(command_prefix="!", intents=intents)
+client = commands.Bot(command_prefix="!", owner_id = 249819836668968962, intents=intents)
 client.remove_command("help")
 
 #Find and load cogs
