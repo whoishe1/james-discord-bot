@@ -3,12 +3,12 @@ import discord
 from discord.ext import commands
 import os
 
-#settings
+#Settings
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix="!", intents=intents)
 client.remove_command("help")
 
-#find and load cogs
+#Find and load cogs
 for filename in os.listdir("./cogs"):
     try:
         if filename.endswith(".py"):
