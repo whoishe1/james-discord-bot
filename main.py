@@ -1,4 +1,4 @@
-from keys.keys import token
+# from keys.keys import token
 import discord
 from discord.ext import commands
 import os
