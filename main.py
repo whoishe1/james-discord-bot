@@ -82,8 +82,7 @@ async def dominion(ctx):
 
     embed.add_field(name = ":wave:", value = f"lets play dominion! https://dominion.games/ :rice: :rice: :rice:")
 
-    await ctx.send(f"{dominion.mention}")
-    await ctx.send(embed = embed)
+    await ctx.send(f"{dominion.mention}", embed = embed)
 
 
 @client.command()
@@ -96,8 +95,7 @@ async def gartic(ctx):
 
     embed.add_field(name = ":wave:", value = f"time to play gartic phone {game_host.mention} link it plz :paintbrush:")
 
-    await ctx.send(f"{board_games.mention}")
-    await ctx.send(embed = embed)
+    await ctx.send(f"{board_games.mention}", embed = embed)
 
 
 @client.command()
@@ -108,7 +106,6 @@ async def apex(ctx):
     embed.set_image(url = "https://cdn.discordapp.com/attachments/842841855686737980/843006397401923594/Apex-Legends.png")
     embed.add_field(name = ":wave:", value = f"Assemble Apex Squad :gun: :gun:")    
 
-    await ctx.send(f"{apex.mention}")
-    await ctx.send(embed = embed)
+    await ctx.send(f"{apex.mention}", embed = embed)
 
 client.run(os.environ['DISCORD_TOKEN'])
