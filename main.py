@@ -53,7 +53,7 @@ async def on_ready():
     print("JamLam bot is ready!")
 
 #Commands
-@client.command
+@client.command()
 async def hello(ctx):
     await ctx.send("Hi :wave:, I'm JamLam I like HON and Chicken Shawarma plates :kissing_heart: :eggplant:")
 
