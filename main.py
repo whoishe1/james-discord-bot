@@ -80,8 +80,9 @@ async def dominion(ctx):
     embed = discord.Embed(colour = discord.Colour.dark_teal())
     embed.set_image(url = "https://cdn.discordapp.com/attachments/842841855686737980/843011390054072320/a0urCDS.png")
 
-    embed.add_field(name = ":wave:", value = f"{dominion.mention} lets play dominion! https://dominion.games/ :rice: :rice: :rice:")
+    embed.add_field(name = ":wave:", value = f"lets play dominion! https://dominion.games/ :rice: :rice: :rice:")
 
+    await ctx.send(f"{dominion.mention}")
     await ctx.send(embed = embed)
 
 
@@ -93,8 +94,9 @@ async def gartic(ctx):
     embed = discord.Embed(colour = discord.Colour.blue())
     embed.set_image(url = "https://cdn.discordapp.com/attachments/842841855686737980/843010353188700200/gartic-phone-kameto.png")
 
-    embed.add_field(name = ":wave:", value = f"time to play gartic phone {board_games.mention} {game_host.mention} link it plz :paintbrush:")
+    embed.add_field(name = ":wave:", value = f"time to play gartic phone {game_host.mention} link it plz :paintbrush:")
 
+    await ctx.send(f"{board_games.mention}")
     await ctx.send(embed = embed)
 
 
@@ -104,8 +106,9 @@ async def apex(ctx):
 
     embed = discord.Embed(colour = discord.Colour.red())
     embed.set_image(url = "https://cdn.discordapp.com/attachments/842841855686737980/843006397401923594/Apex-Legends.png")
-    embed.add_field(name = ":wave:", value = f"Assemble Apex Squad {apex.mention} :gun: :gun:")    
+    embed.add_field(name = ":wave:", value = f"Assemble Apex Squad :gun: :gun:")    
 
+    await ctx.send(f"{apex.mention}")
     await ctx.send(embed = embed)
 
 client.run(os.environ['DISCORD_TOKEN'])
