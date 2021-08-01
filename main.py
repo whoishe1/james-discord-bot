@@ -3,12 +3,12 @@ import discord
 from discord.ext import commands
 import os
 
-#Settings
+# Settings
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix="!", intents=intents)
 client.remove_command("help")
 
-#Find and load cogs
+# Find and load cogs
 for filename in os.listdir("./cogs"):
     try:
         if filename.endswith(".py"):
@@ -16,10 +16,10 @@ for filename in os.listdir("./cogs"):
     except Exception as e:
         print(f"Could not load cog {filename}: {str(e)}")
 
-#Load Cog
+# Load Cog
 @client.command()
 @commands.has_role(304851155144540172)
-async def load(ctx, cog = None):
+async def load(ctx, cog=None):
     try:
         client.load_extension(cog)
     except Exception as e:
@@ -29,10 +29,11 @@ async def load(ctx, cog = None):
         name = cog.split(".")[1]
         await ctx.send(f"{name} has been loaded")
 
-#Unload Cog
+
+# Unload Cog
 @client.command()
 @commands.has_role(304851155144540172)
-async def unload(ctx, cog = None):
+async def unload(ctx, cog=None):
     try:
         client.unload_extension(cog)
     except Exception as e:
@@ -42,20 +43,27 @@ async def unload(ctx, cog = None):
         name = cog.split(".")[1]
         await ctx.send(f"{name} has been unloaded")
 
-#Catch errors
+
+# Catch errors
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, discord.ext.commands.errors.CommandNotFound):
-        await ctx.send("Command wasn't found!:cry: Please use !help for the list of commands")
+        await ctx.send(
+            "Command wasn't found!:cry: Please use !help for the list of commands"
+        )
+
 
 @client.event
 async def on_ready():
     print("JamLam bot is ready!")
 
-#Commands
+
+# Commands
 @client.command()
 async def hello(ctx):
-    await ctx.send("Hi :wave:, I'm JamLam I like HON and Chicken Shawarma plates :kissing_heart: :eggplant:")
+    await ctx.send(
+        "Hi :wave:, I'm JamLam I like HON and Chicken Shawarma plates :kissing_heart: :eggplant:"
+    )
 
 
 @client.command()
@@ -77,12 +85,17 @@ async def clear(ctx, amount=1):
 async def dominion(ctx):
     dominion = ctx.guild.get_role(843055201204174879)
 
-    embed = discord.Embed(colour = discord.Colour.dark_teal())
-    embed.set_image(url = "https://cdn.discordapp.com/attachments/842841855686737980/843011390054072320/a0urCDS.png")
+    embed = discord.Embed(colour=discord.Colour.dark_teal())
+    embed.set_image(
+        url="https://cdn.discordapp.com/attachments/842841855686737980/843011390054072320/a0urCDS.png"
+    )
 
-    embed.add_field(name = ":wave:", value = f"lets play dominion! https://dominion.games/ :rice: :rice: :rice:")
+    embed.add_field(
+        name=":wave:",
+        value=f"lets play dominion! https://dominion.games/ :rice: :rice: :rice:",
+    )
 
-    await ctx.send(f"{dominion.mention}", embed = embed)
+    await ctx.send(f"{dominion.mention}", embed=embed)
 
 
 @client.command()
@@ -90,22 +103,45 @@ async def gartic(ctx):
     board_games = ctx.guild.get_role(751321414640074754)
     game_host = ctx.guild.get_member(190327326372790272)
 
-    embed = discord.Embed(colour = discord.Colour.blue())
-    embed.set_image(url = "https://cdn.discordapp.com/attachments/842841855686737980/843010353188700200/gartic-phone-kameto.png")
+    embed = discord.Embed(colour=discord.Colour.blue())
+    embed.set_image(
+        url="https://cdn.discordapp.com/attachments/842841855686737980/843010353188700200/gartic-phone-kameto.png"
+    )
 
-    embed.add_field(name = ":wave:", value = f"time to play gartic phone {game_host.mention} link it plz :paintbrush:")
+    embed.add_field(
+        name=":wave:",
+        value=f"time to play gartic phone {game_host.mention} link it plz :paintbrush:",
+    )
 
-    await ctx.send(f"{board_games.mention}", embed = embed)
+    await ctx.send(f"{board_games.mention}", embed=embed)
 
 
 @client.command()
 async def apex(ctx):
     apex = ctx.guild.get_role(842672891924447243)
 
-    embed = discord.Embed(colour = discord.Colour.red())
-    embed.set_image(url = "https://cdn.discordapp.com/attachments/842841855686737980/843006397401923594/Apex-Legends.png")
-    embed.add_field(name = ":wave:", value = f"Assemble Apex Squad :gun: :gun:")    
+    embed = discord.Embed(colour=discord.Colour.red())
+    embed.set_image(
+        url="https://cdn.discordapp.com/attachments/842841855686737980/843006397401923594/Apex-Legends.png"
+    )
+    embed.add_field(name=":wave:", value=f"Assemble Apex Squad :gun: :gun:")
 
-    await ctx.send(f"{apex.mention}", embed = embed)
+    await ctx.send(f"{apex.mention}", embed=embed)
 
-client.run(os.environ['DISCORD_TOKEN'])
+
+@client.command()
+async def unite(ctx):
+    unite = ctx.guild.get_role(871333695787773982)
+
+    embed = discord.Embed(colour=discord.Colour.gold())
+    embed.set_image(
+        url="https://cdn.discordapp.com/attachments/853158897170513951/871316895087882240/unite.png"
+    )
+    embed.add_field(
+        name=":wave:", value=f"Pokemon battle time! :dog::cat::pig::panda_face::frog:"
+    )
+
+    await ctx.send(f"{unite.mention}", embed=embed)
+
+
+client.run(os.environ["DISCORD_TOKEN"])
