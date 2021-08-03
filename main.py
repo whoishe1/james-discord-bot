@@ -47,13 +47,14 @@ async def unload(ctx, cog=None):
 # Catch errors
 @client.event
 async def on_command_error(ctx, error):
-    spec_user = ctx.guild.get_member(249819836668968962)
-
     if isinstance(error, discord.ext.commands.errors.CommandNotFound):
         await ctx.send(
             "Command wasn't found!:cry: Please use !help for the list of commands"
         )
-    elif isinstance(error, discord.ext.commands.errors.CommandNotFound) and spec_user:
+    elif (
+        isinstance(error, discord.ext.commands.errors.CommandNotFound)
+        and ctx.message.author.id == 249819836668968962
+    ):
         await ctx.send("That isn't a command you noob")
 
 
