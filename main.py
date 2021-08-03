@@ -47,15 +47,27 @@ async def unload(ctx, cog=None):
 # Catch errors
 @client.event
 async def on_command_error(ctx, error):
-    if isinstance(error, discord.ext.commands.errors.CommandNotFound):
-        await ctx.send(
-            "Command wasn't found!:cry: Please use !help for the list of commands"
-        )
-    elif (
+    spec_user = ctx.guild.get_member(191410964019675137)
+    spec_user2 = ctx.guild.get_member(803540330750017576)
+
+    if (
         isinstance(error, discord.ext.commands.errors.CommandNotFound)
-        and ctx.message.author.id == 249819836668968962
+        and ctx.message.author.id == 191410964019675137
     ):
-        await ctx.send("That isn't a command you noob")
+        await ctx.send(
+            f"{spec_user.mention} (Wiley) that command wasn't found you noob :laughing:  Use !help for the list of commands."
+        )
+    if (
+        isinstance(error, discord.ext.commands.errors.CommandNotFound)
+        and ctx.message.author.id == 803540330750017576
+    ):
+        await ctx.send(
+            f"{spec_user2.mention} (Wiley) that command wasn't found you noob :laughing:  Use !help for the list of commands."
+        )
+    elif isinstance(error, discord.ext.commands.errors.CommandNotFound):
+        await ctx.send(
+            f"Command wasn't found! :cry: Please use !help for the list of commands."
+        )
 
 
 @client.event
