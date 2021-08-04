@@ -57,7 +57,7 @@ async def on_command_error(ctx, error):
         await ctx.send(
             f"{spec_user.mention} (Wiley) that command wasn't found you noob :laughing:  Use !help for the list of commands."
         )
-    if (
+    elif (
         isinstance(error, discord.ext.commands.errors.CommandNotFound)
         and ctx.message.author.id == 803540330750017576
     ):
