@@ -161,4 +161,20 @@ async def unite(ctx):
     await ctx.send(f"{unite.mention}", embed=embed)
 
 
+@client.command()
+async def unite(ctx):
+    unite = ctx.guild.get_role(894322801383714886)
+
+    embed = discord.Embed(colour=discord.Colour.purple())
+    embed.set_image(
+        url="https://cdn.discordapp.com/attachments/842841855686737980/894320880216342579/220px-Hon_logo_box_art.png"
+    )
+    embed.add_field(
+        name=":wave:",
+        value=f"guys James wants to play HoN :elephant::octopus::ox::cow::lion_face::fish:",
+    )
+
+    await ctx.send(f"{unite.mention}", embed=embed)
+
+
 client.run(os.environ["DISCORD_TOKEN"])
