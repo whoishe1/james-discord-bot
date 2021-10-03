@@ -162,7 +162,7 @@ async def unite(ctx):
 
 
 @client.command()
-async def unite(ctx):
+async def hon(ctx):
     unite = ctx.guild.get_role(894322801383714886)
 
     embed = discord.Embed(colour=discord.Colour.purple())
