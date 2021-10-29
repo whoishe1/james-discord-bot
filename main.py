@@ -163,7 +163,7 @@ async def unite(ctx):
 
 @client.command()
 async def hon(ctx):
-    unite = ctx.guild.get_role(894322801383714886)
+    hon = ctx.guild.get_role(894322801383714886)
 
     embed = discord.Embed(colour=discord.Colour.purple())
     embed.set_image(
@@ -174,7 +174,23 @@ async def hon(ctx):
         value=f"guys James wants to play HoN :elephant::octopus::ox::cow::lion_face::fish:",
     )
 
-    await ctx.send(f"{unite.mention}", embed=embed)
+    await ctx.send(f"{hon.mention}", embed=embed)
+
+
+@client.command()
+async def legion(ctx):
+    legion = ctx.guild.get_role(903483125584240681)
+
+    embed = discord.Embed(colour=discord.Colour.light_gray())
+    embed.set_image(
+        url="https://cdn.discordapp.com/attachments/842841855686737980/903482555960033310/header.png"
+    )
+    embed.add_field(
+        name=":wave:",
+        value=f"LEGION TD 2 NOW :hypers::hypers::hypers:",
+    )
+
+    await ctx.send(f"{legion.mention}", embed=embed)
 
 
 client.run(os.environ["DISCORD_TOKEN"])
